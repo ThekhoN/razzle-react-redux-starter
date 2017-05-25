@@ -6,7 +6,7 @@
     "start": "razzle start",
     "build": "razzle build",
     "start:prod": "NODE_ENV=production node build/server.js",
-    "heroku-postbuild": "rm -rf build && npm run build"
+    "heroku-postbuild": "rm -rf build"
   },
   "dependencies": {
     "es6-promise": "^4.1.0",
