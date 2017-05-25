@@ -11,7 +11,6 @@ import App from '../common/containers/App';
 import { fetchCounter } from '../common/api/counter';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
-
 const server = express();
 
 server
@@ -20,25 +19,21 @@ server
   .get('/*', (req, res) => {
     fetchCounter(apiResult => {
       // Read the counter from the request, if provided
+      // console.log('apiResult: ', apiResult);
       const params = qs.parse(req.query);
       const counter = parseInt(params.counter, 10) || apiResult || 0;
-
       // Compile an initial state
       const preloadedState = { counter };
-
       // Create a new Redux store instance
       const store = configureStore(preloadedState);
-
       // Render the component to a string
       const markup = renderToString(
         <Provider store={store}>
           <App />
         </Provider>
       );
-
       // Grab the initial state from our Redux store
       const finalState = store.getState();
-
       res.send(`<!doctype html>
     <html lang="">
     <head>
