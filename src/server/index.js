@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import configureStore from '../common/store/configureStore';
 import App from '../common/containers/App';
 import { fetchCounter } from '../common/api/counter';
-
+import { StaticRouter, matchPath } from 'react-router-dom';
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 const server = express();
 
@@ -18,6 +18,7 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
     fetchCounter(apiResult => {
+      const context = {};
       // Read the counter from the request, if provided
       // console.log('apiResult: ', apiResult);
       const params = qs.parse(req.query);
@@ -29,7 +30,9 @@ server
       // Render the component to a string
       const markup = renderToString(
         <Provider store={store}>
-          <App />
+          <StaticRouter context={context} location={req.url}>
+            <App />
+          </StaticRouter>
         </Provider>
       );
       // Grab the initial state from our Redux store

@@ -1,0 +1,18 @@
+nav {
+  background: #f2f2f2;
+  display: block;
+  width: 100%;
+  float: left;
+  margin-bottom: 1.6em;
+}
+
+nav a {
+  display: inline-block;
+  padding: 1.6em;
+}
+
+nav a.active {
+  color: white;
+  font-weight: bold;
+  background: orange;
+}

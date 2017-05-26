@@ -1,14 +1,17 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import Counter from '../components/counter';
-import * as CounterActions from '../actions';
+import React from 'react';
+import {Route} from 'react-router-dom';
+import CounterContainer from '../components/counter';
+import Nav from '../components/nav';
+import HomePage from '../components/pageHome';
+import routerComponentWrapperHOC from '../components/routerComponentWrapperHOC';
 
-const mapStateToProps = state => ({
-  counter: state.counter,
-});
+const App = () => (
+  <div>
+    <Nav />
+    <hr />
+    <Route exact path='/' component={routerComponentWrapperHOC(HomePage)} />
+    <Route exact path='/counter' component={routerComponentWrapperHOC(CounterContainer)} />
+  </div>
+);
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default App;
