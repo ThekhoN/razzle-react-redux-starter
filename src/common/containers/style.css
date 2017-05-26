@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.react-app {
+  font-family: 'Roboto', sans-serif;
+  color: #555555;
+}
+
+.react-app a {
+  text-decoration: none;
+}
+
+.react-app img {
+  max-width: 100%;
+  height: auto;
+}

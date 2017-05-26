@@ -21,15 +21,15 @@ class Counter extends Component {
   render () {
     const {asyncIncrement, asyncDecrement, asyncIncrementIfOdd, counter} = this.props;
     return (
-      <p>
-        Clicked: <b>{counter}</b> times
+      <div className='counter'>
+        Clicked: <b className='special'>{counter}</b> times
         {' '}
         <button onClick={asyncIncrement}>+</button>
         {' '}
         <button onClick={asyncDecrement}>-</button>
         {' '}
         <button onClick={asyncIncrementIfOdd}>Increment if odd</button>
-      </p>
+      </div>
     );
   }
 }

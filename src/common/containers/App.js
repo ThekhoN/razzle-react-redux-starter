@@ -4,11 +4,11 @@ import CounterContainer from '../components/counter';
 import Nav from '../components/nav';
 import HomePage from '../components/pageHome';
 import routerComponentWrapperHOC from '../components/routerComponentWrapperHOC';
+import './style.css';
 
 const App = () => (
-  <div>
+  <div className='react-app'>
     <Nav />
-    <hr />
     <Route exact path='/' component={routerComponentWrapperHOC(HomePage)} />
     <Route exact path='/counter' component={routerComponentWrapperHOC(CounterContainer)} />
   </div>
